@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "djn.chatapp_auth.v1;cp_auth";
+
+service Auth {
+  rpc Register (RegisterRequest) returns (RegisterResponse) {}
+  rpc Login (LoginRequest) returns (LoginResponse) {}
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  string username = 3;
+  string first_name = 4;
+  optional string last_name = 5;
+}
+
+message RegisterResponse {
+  int64 user_id = 1;
+  string access_token = 2;
+}
+
+message LoginRequest {
+  oneof UserIdentifier {
+    int64 user_id = 1;
+    string username = 2;
+    string email = 3;
+  }
+  oneof LoginMethod {
+    string access_token = 4;
+    string password = 5;
+  }
+}
+
+message LoginResponse {
+  int64 user_id = 1;
+  string access_token = 2;
+}
