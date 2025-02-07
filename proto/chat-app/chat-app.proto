@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "djn.chatapp_auth.v1;cp_auth";
+option go_package = "djn.chatapp_auth.v1;chatapp_auth";
 
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse) {}
