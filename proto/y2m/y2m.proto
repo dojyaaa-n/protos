@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package y2m_dl;
+
+option go_package = "y2m.download-service.v1;y2mdl_pb";
+
+service DownloadService {
+  rpc Download (DownloadRequest) returns (DownloadResponse) {}
+}
+
+message DownloadRequest {
+  oneof RequestType {
+    string url = 1;
+    string track = 2;
+    string author = 3;
+    string playlist = 4;
+  }
+}
+
+message DownloadResponse {
+  bool downloaded = 1;
+  string file_path = 2;
+  optional string error = 3;
+}
