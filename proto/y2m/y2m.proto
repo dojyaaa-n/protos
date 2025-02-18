@@ -5,7 +5,7 @@ package y2m_dl;
 option go_package = "y2m.download-service.v1;y2mdl_pb";
 
 service DownloadAudioService {
-  rpc Download (DownloadAudioRequest) returns (DownloadAudioResponse) {}
+  rpc DownloadAudio (DownloadAudioRequest) returns (DownloadAudioResponse) {}
 }
 
 message DownloadAudioRequest {
