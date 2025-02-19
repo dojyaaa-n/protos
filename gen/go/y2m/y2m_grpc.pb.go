@@ -4,7 +4,7 @@
 // - protoc             v3.21.12
 // source: y2m/y2m.proto
 
-package y2mdl_pb
+package y2md_pb
 
 import (
 	context "context"
@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DownloadAudioService_DownloadAudio_FullMethodName = "/y2m_dl.DownloadAudioService/DownloadAudio"
+	DownloadAudioService_DownloadFromSource_FullMethodName = "/y2m.audio_dw.DownloadAudioService/DownloadFromSource"
 )
 
 // DownloadAudioServiceClient is the client API for DownloadAudioService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DownloadAudioServiceClient interface {
-	DownloadAudio(ctx context.Context, in *DownloadAudioRequest, opts ...grpc.CallOption) (*DownloadAudioResponse, error)
+	DownloadFromSource(ctx context.Context, in *DownloadAudioRequest, opts ...grpc.CallOption) (*DownloadAudioResponse, error)
 }
 
 type downloadAudioServiceClient struct {
@@ -37,10 +37,10 @@ func NewDownloadAudioServiceClient(cc grpc.ClientConnInterface) DownloadAudioSer
 	return &downloadAudioServiceClient{cc}
 }
 
-func (c *downloadAudioServiceClient) DownloadAudio(ctx context.Context, in *DownloadAudioRequest, opts ...grpc.CallOption) (*DownloadAudioResponse, error) {
+func (c *downloadAudioServiceClient) DownloadFromSource(ctx context.Context, in *DownloadAudioRequest, opts ...grpc.CallOption) (*DownloadAudioResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DownloadAudioResponse)
-	err := c.cc.Invoke(ctx, DownloadAudioService_DownloadAudio_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, DownloadAudioService_DownloadFromSource_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *downloadAudioServiceClient) DownloadAudio(ctx context.Context, in *Down
 // All implementations must embed UnimplementedDownloadAudioServiceServer
 // for forward compatibility.
 type DownloadAudioServiceServer interface {
-	DownloadAudio(context.Context, *DownloadAudioRequest) (*DownloadAudioResponse, error)
+	DownloadFromSource(context.Context, *DownloadAudioRequest) (*DownloadAudioResponse, error)
 	mustEmbedUnimplementedDownloadAudioServiceServer()
 }
 
@@ -62,8 +62,8 @@ type DownloadAudioServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedDownloadAudioServiceServer struct{}
 
-func (UnimplementedDownloadAudioServiceServer) DownloadAudio(context.Context, *DownloadAudioRequest) (*DownloadAudioResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DownloadAudio not implemented")
+func (UnimplementedDownloadAudioServiceServer) DownloadFromSource(context.Context, *DownloadAudioRequest) (*DownloadAudioResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DownloadFromSource not implemented")
 }
 func (UnimplementedDownloadAudioServiceServer) mustEmbedUnimplementedDownloadAudioServiceServer() {}
 func (UnimplementedDownloadAudioServiceServer) testEmbeddedByValue()                              {}
@@ -86,20 +86,20 @@ func RegisterDownloadAudioServiceServer(s grpc.ServiceRegistrar, srv DownloadAud
 	s.RegisterService(&DownloadAudioService_ServiceDesc, srv)
 }
 
-func _DownloadAudioService_DownloadAudio_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DownloadAudioService_DownloadFromSource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DownloadAudioRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DownloadAudioServiceServer).DownloadAudio(ctx, in)
+		return srv.(DownloadAudioServiceServer).DownloadFromSource(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: DownloadAudioService_DownloadAudio_FullMethodName,
+		FullMethod: DownloadAudioService_DownloadFromSource_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DownloadAudioServiceServer).DownloadAudio(ctx, req.(*DownloadAudioRequest))
+		return srv.(DownloadAudioServiceServer).DownloadFromSource(ctx, req.(*DownloadAudioRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -108,12 +108,12 @@ func _DownloadAudioService_DownloadAudio_Handler(srv interface{}, ctx context.Co
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var DownloadAudioService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "y2m_dl.DownloadAudioService",
+	ServiceName: "y2m.audio_dw.DownloadAudioService",
 	HandlerType: (*DownloadAudioServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DownloadAudio",
-			Handler:    _DownloadAudioService_DownloadAudio_Handler,
+			MethodName: "DownloadFromSource",
+			Handler:    _DownloadAudioService_DownloadFromSource_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
