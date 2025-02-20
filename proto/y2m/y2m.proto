@@ -9,13 +9,14 @@ service DownloadAudioService {
 }
 
 message DownloadAudioRequest {
+  int64 uid = 1;
   oneof source {
-    string url = 1;
-    string search = 2;
+    string url = 2;
+    string search = 3;
   }
 }
 
 message DownloadAudioResponse {
-  optional string file_path = 1;
-  optional string error_message = 2;
+  string file_path = 1;
+  string error_message = 2;
 }
