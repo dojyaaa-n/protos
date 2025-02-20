@@ -1,22 +1,19 @@
 syntax = "proto3";
 
-package y2m.audio_dw;
+package y2m.audio_dl;
 
-option go_package = "y2m/audio_dw_service/v1;y2md_pb";
+option go_package = "y2m/audio_dl_svc/v1;y2m_dl_pb";
 
 service DownloadAudioService {
-  rpc DownloadFromSource (DownloadAudioRequest) returns (DownloadAudioResponse) {}
+  rpc DownloadFromURL (DownloadAudioRequest) returns (DownloadAudioResponse) {}
 }
 
 message DownloadAudioRequest {
   int64 uid = 1;
-  oneof source {
-    string url = 2;
-    string search = 3;
-  }
+  string url = 2;
 }
 
 message DownloadAudioResponse {
   string file_path = 1;
-  string error_message = 2;
+  string status = 2;
 }
