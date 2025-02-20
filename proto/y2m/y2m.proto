@@ -10,15 +10,12 @@ service DownloadAudioService {
 
 message DownloadAudioRequest {
   oneof source {
-    string track_url = 1;
-    string track_name = 2;
-    string artist_name = 3;
-    string playlist_name = 4;
+    string url = 1;
+    string search = 2;
   }
 }
 
 message DownloadAudioResponse {
-  bool success = 1;
-  string file_path = 2;
-  optional string error_message = 3;
+  optional string file_path = 1;
+  optional string error_message = 2;
 }
