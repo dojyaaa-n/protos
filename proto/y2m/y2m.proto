@@ -4,16 +4,16 @@ package y2m.audio_dl;
 
 option go_package = "y2m/audio_dl_svc/v1;y2m_dl_pb";
 
-service DownloadAudioService {
-  rpc DownloadFromURL (DownloadAudioRequest) returns (DownloadAudioResponse) {}
+service AudioDownloadService {
+  rpc DownloadFromURL (AudioDownloadRequest) returns (AudioDownloadResponse) {}
 }
 
-message DownloadAudioRequest {
+message AudioDownloadRequest {
   int64 uid = 1;
   string url = 2;
 }
 
-message DownloadAudioResponse {
+message AudioDownloadResponse {
   string file_path = 1;
   string status = 2;
 }
