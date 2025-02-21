@@ -15,5 +15,4 @@ message AudioDownloadRequest {
 
 message AudioDownloadResponse {
   string file_path = 1;
-  string status = 2;
 }
